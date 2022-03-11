@@ -1,4 +1,3 @@
-import { uniqueDates } from "../services/date.js";
 import checkComplete from "./checkComplete.js";
 import deleteIcon from "./deleteIcon.js";
 import { displayTasks } from "./readTasks.js";
@@ -6,6 +5,7 @@ import { displayTasks } from "./readTasks.js";
 // Función que recibe el evento, el cual genera el formulario
 export const addTask = (evento) => {
     evento.preventDefault();
+
        const list = document.querySelector("[data-list]"); // Lista de tareas
        const input = document.querySelector("[data-form-input]"); // Para que el usuario agregue tarea
        const calendar = document.querySelector("[data-form-date]"); //Fecha seleccionada
@@ -22,12 +22,13 @@ export const addTask = (evento) => {
         calendar.value = "";
 
        const complete = false;
+
        const taskObjet = { //Objeto donde almacenamos ambos datos
             value,
             dateFormat,
             complete,
             id: uuid.v4()
-  };
+       };
 
        list.innerHTML = '';
 
@@ -36,9 +37,6 @@ export const addTask = (evento) => {
              localStorage.setItem("tasks", JSON.stringify(taskList));
 
              displayTasks();
-
-       const task = createTask(taskObjet); // Crear tarea
-             list.appendChild(task);  // Agregar tarea a la lista
 };
 
 //Texto y fecha que pone el usuario

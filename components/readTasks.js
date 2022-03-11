@@ -4,7 +4,6 @@ import dateElement from "./dateElement.js";
 
 export const displayTasks = () => {
     const list = document.querySelector('[data-list]');
-
     const taskList = JSON.parse(localStorage.getItem('tasks')) || []; //Tomamos la info almacenada en local Storage
     const dates = uniqueDates(taskList);
     orderDates(dates);
